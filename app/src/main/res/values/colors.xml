@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color><!--顶部导航栏底色-->
+    <color name="colorPrimaryDark">#303F9F</color><!--状态栏颜色-->
+    <color name="colorAccent">#FF4081</color><!--控件底色-->
+
+    <color name="main_window_background">#eeeeee</color>
+    <color name="main_list_bg">#f1f1f1</color>
+
+    <color name="tools_bar_title_color">#FFFFFF</color>
+    <color name="progressbar_bg">#F37800</color><!--加载进度框中的圆环-->
+
+    <color name="white">#FFFFFF</color>
+    <color name="red">#FF0000</color>
+    <color name="blue">#3F51B5</color>
+
+</resources>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_toolbar"
+    style="@style/Lottery.Toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="?attr/colorPrimary"
+    android:elevation="@dimen/toolsBar_elevation">
+
+    <TextView
+        android:id="@+id/main_toolbar_title"
+        android:name="@string/app_name"
+        style="@style/ToolBarTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="彩票" />
+</android.support.v7.widget.Toolbar>
+
+

@@ -5,63 +5,105 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="80dip"
-    android:orientation="horizontal">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/tv_ball_1"
-        style="@style/Ball.Red"
-        android:text="03"
-        card_view:layout_constraintBottom_toBottomOf="parent"
-        card_view:layout_constraintTop_toTopOf="parent"
-        tools:text="02"/>
+        android:id="@+id/current_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dip"
+        android:layout_marginRight="15dip"
+        android:layout_marginTop="15dip"
+        tools:text="123123123" />
 
-    <TextView
-        android:id="@+id/tv_ball_2"
-        style="@style/Ball.Red"
-        android:text="03"
-        card_view:layout_constraintBottom_toBottomOf="parent"
-        card_view:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="79dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dip"
+        android:layout_marginLeft="15dip"
+        android:layout_marginRight="15dip"
+        android:layout_marginTop="10dip"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tv_ball_3"
-        style="@style/Ball.Red"
-        android:text="03"
-        card_view:layout_constraintBottom_toBottomOf="parent"
-        card_view:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="151dp" />
+        <TextView
+            android:id="@+id/tv_ball_1"
+            style="@style/Ball.Red"
+            android:text="03"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent"
+            tools:text="02" />
 
-    <TextView
-        android:id="@+id/tv_ball_4"
-        style="@style/Ball.Red"
-        android:text="03"
-        card_view:layout_constraintBottom_toBottomOf="parent"
-        card_view:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="227dp" />
+        <TextView
+            android:id="@+id/tv_ball_2"
+            style="@style/Ball.Red"
+            android:text="03"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="79dp" />
 
-    <TextView
-        android:id="@+id/tv_ball_5"
-        style="@style/Ball.Red"
-        android:text="03"
-        card_view:layout_constraintBottom_toBottomOf="parent"
-        card_view:layout_constraintEnd_toEndOf="parent"
-        card_view:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tv_ball_3"
+            style="@style/Ball.Red"
+            android:text="03"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="151dp" />
 
-    <TextView
-        android:id="@+id/tv_ball_6"
-        style="@style/Ball.Blue"
-        android:text="03"
-        card_view:layout_constraintBottom_toBottomOf="parent"
-        card_view:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="227dp" />
+        <TextView
+            android:id="@+id/tv_ball_4"
+            style="@style/Ball.Red"
+            android:text="03"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="227dp" />
 
-    <TextView
-        android:id="@+id/tv_ball_7"
-        style="@style/Ball.Blue"
-        android:text="03"
-        card_view:layout_constraintBottom_toBottomOf="parent"
-        card_view:layout_constraintEnd_toEndOf="parent"
-        card_view:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tv_ball_5"
+            style="@style/Ball.Red"
+            android:text="03"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="1dip"
+            android:layout_height="match_parent"
+            android:background="@color/divider" />
+
+        <TextView
+            android:id="@+id/tv_ball_6"
+            style="@style/Ball.Blue"
+            android:layout_marginLeft="12dip"
+            android:text="03"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="227dp" />
+
+        <TextView
+            android:id="@+id/tv_ball_7"
+            style="@style/Ball.Blue"
+            android:text="03"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/show_detail"
+            android:layout_width="12dip"
+            android:layout_height="12dip"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="20dip"
+            android:src="@drawable/bottom"/>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@color/divider" />
+
+    <include layout="@layout/lottery_detail"/>
 </LinearLayout>
 

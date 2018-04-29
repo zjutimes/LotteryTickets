@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Lottery Tickets</string>
+    <string name="format_term">第%1$s期 %2$s</string>
+    <string name="format_total_sales">本期销售: %1$s元</string>
+    <string name="format_pool">奖池累计: %1$s元</string>
+    <string name="level">奖级</string>
+    <string name="num">中奖注数</string>
+    <string name="piece">每注奖金</string>
+    <string name="send_money">应派奖金合计</string>
+
+    <string name="first">一等奖</string>
+    <string name="base">基本</string>
 </resources>

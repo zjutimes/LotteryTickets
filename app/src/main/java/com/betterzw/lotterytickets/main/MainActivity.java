@@ -34,7 +34,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class MainActivity extends BaseActivity implements BaseQuickAdapter.RequestLoadMoreListener, SwipeRefreshLayout.OnRefreshListener{
+public class MainActivity extends BaseActivity implements BaseQuickAdapter.RequestLoadMoreListener, SwipeRefreshLayout.OnRefreshListener {
 
     private final String API_URL = "http://m.lottery.gov.cn/api/";
 
@@ -53,7 +53,7 @@ public class MainActivity extends BaseActivity implements BaseQuickAdapter.Reque
 
     int currentNum;
 
-    String currentDate = "18047";
+    String currentTerm = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,41 +61,19 @@ public class MainActivity extends BaseActivity implements BaseQuickAdapter.Reque
         setContentView(R.layout.activity_main);
         L.d("oncreate");
 
-
         //判断是否要显示splash activity
        /* if(Prefs.isSplashEnabled() && savedInstanceState == null){
             //start splash activity
         }*/
 
-
         init();
         getData();
-
-
-//        val retrofit = Retrofit.Builder()
-//                .baseUrl("https://api.github.com/")
-//                .build()
-
-        // Create a call instance for looking up Retrofit contributors.
-      /*  Call<List<Contributor>> call = github.contributors("square", "retrofit");
-        call.enqueue(new Callback<List<Contributor>>() {
-            @Override
-            public void onResponse(Call<List<Contributor>> call, Response<List<Contributor>> response) {
-                for (Contributor contributor : response.body()) {
-                    L.v("response:"+contributor.login+","+contributor.url+","+contributor.contributions);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Contributor>> call, Throwable t) {
-            }
-        });*/
     }
 
     /**
      * 初始化
      */
-    private void init(){
+    private void init() {
 
         toolbarTitle.setText(R.string.app_name);
 
@@ -121,7 +99,6 @@ public class MainActivity extends BaseActivity implements BaseQuickAdapter.Reque
         swipeRefreshLayout.setEnabled(false);
         page++;
 
-//        homeAdapter.loadMoreEnd(false);
         getData();
     }
 
@@ -137,7 +114,7 @@ public class MainActivity extends BaseActivity implements BaseQuickAdapter.Reque
     /**
      * 获取数据
      */
-    private void getData(){
+    private void getData() {
         Retrofit retrofit = RetrofitFactory.newInstance(API_URL);
         // Create an instance of our GitHub API interface.
         LotteryService lotteryService = retrofit.create(LotteryService.class);
@@ -145,36 +122,34 @@ public class MainActivity extends BaseActivity implements BaseQuickAdapter.Reque
         Date date = new Date();
 
 
-        currentNum = page  * pageSize;
+        currentNum = page * pageSize;
 
 
-        Call<List<LotteryBaseData>> lotteryData = lotteryService.contributors(4, currentDate, currentNum);
+        Call<List<LotteryBaseData>> lotteryData = lotteryService.contributors(4, currentTerm, currentNum);
         lotteryData.enqueue(new Callback<List<LotteryBaseData>>() {
             @Override
             public void onResponse(Call<List<LotteryBaseData>> call, Response<List<LotteryBaseData>> response) {
-                L.v("response:success->"+response.body().size());
+                L.v("response:success->" + response.body().size());
 
 
                 List<LotteryBaseData.LotteryData> mDataList = new ArrayList<>();
 
-                for (LotteryBaseData lotteryBaseData : response.body()){
-
-                    L.v("item====="+lotteryBaseData.mdata.size());
-
-                   for (LotteryBaseData.LotteryData lotteryData : lotteryBaseData.mdata){
+                for (LotteryBaseData lotteryBaseData : response.body()) {
+                    for (LotteryBaseData.LotteryData lotteryData : lotteryBaseData.mdata) {
                         StringBuilder resultNumber = new StringBuilder();
-                        for (String number : lotteryData.codeNumber){
+                        for (String number : lotteryData.codeNumber) {
                             resultNumber.append(number).append("  ");
                         }
-
-                       mDataList.add(lotteryData);
-                        L.v("item====="+resultNumber);
+                        mDataList.add(lotteryData);
                     }
                 }
 
                 homeAdapter.setNewData(mDataList);
-
                 homeAdapter.loadMoreComplete();
+
+                if(swipeRefreshLayout.isRefreshing()){
+                    swipeRefreshLayout.setRefreshing(false);
+                }
             }
 
             @Override
@@ -182,36 +157,5 @@ public class MainActivity extends BaseActivity implements BaseQuickAdapter.Reque
                 homeAdapter.loadMoreFail();
             }
         });
-
-
-     /*   Call<RepoSearchResponse> searchResponseCall = github.searchRepos("android+created:"+newWeekTime, page);
-        searchResponseCall.enqueue(new Callback<RepoSearchResponse>() {
-            @Override
-            public void onResponse(Call<RepoSearchResponse> call, Response<RepoSearchResponse> response) {
-                L.v("response:success->"+response.body().getTotal());
-//                L.v("response:success->"+response.body().getItems());
-
-                ArrayList<Repo> mDataList = new ArrayList<>();
-                for (Repo repo : response.body().getItems()){
-                    L.v("repo:"+repo.fullName+","+repo.description+","+repo.stars);
-
-                    mDataList.add(repo);
-                }
-
-                if (page == 1){
-                    homeAdapter.setNewData(mDataList);
-                }else{
-                    homeAdapter.addData(mDataList);
-                }
-
-                homeAdapter.loadMoreComplete();
-            }
-
-            @Override
-            public void onFailure(Call<RepoSearchResponse> call, Throwable t) {
-                L.v("response:onFailure->");
-                homeAdapter.loadMoreFail();
-            }
-        });*/
     }
 }

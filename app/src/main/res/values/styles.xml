@@ -32,6 +32,7 @@
         <item name="android:gravity">center</item>
         <item name="android:layout_marginRight">12dip</item>
         <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="Ball.Red">
